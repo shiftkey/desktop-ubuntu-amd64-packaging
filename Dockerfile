@@ -14,7 +14,7 @@ RUN apt install -y libasound2 libatk-bridge2.0-0 libatk1.0-0 \
     libnss3 libpango-1.0-0 libx11-6 libxcb1 libxcomposite1 \
     libxdamage1 libxext6 libxfixes3 libxkbcommon0 libxrandr2 \
     libsecret-1-0
-    
+
 ENV AS=as
 ENV STRIP=strip
 ENV AR=ar
@@ -34,5 +34,10 @@ ENV npm_config_arch=x64
 #
 RUN curl -sL 'https://unofficial-builds.nodejs.org/download/release/v18.16.1/node-v18.16.1-linux-x64-glibc-217.tar.xz' | xzcat | sudo tar -vx  --strip-components=1 -C /usr/local/
 RUN npm install --global yarn
+
+# install new enough git to work with repository
+RUN add-apt-repository ppa:git-core/ppa -y
+RUN apt update && apt install -y git
+RUN git --version
 
 ENTRYPOINT ["/entrypoint.sh"]

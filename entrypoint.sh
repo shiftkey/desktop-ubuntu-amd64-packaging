@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git config --global --add safe.directory /github/workspace
+
 yarn
 yarn build:prod
 yarn run package
