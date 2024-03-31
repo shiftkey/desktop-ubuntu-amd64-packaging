@@ -1,0 +1,5 @@
+name: 'GitHub Desktop for Linux packaging for ARM64'
+description: 'This action runs a build script with a specific set of dependencies to support earlier glibc versions. This expects the working directory '
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
